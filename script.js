@@ -8,8 +8,7 @@ document.querySelector('.message').textContent = 'Correct Number!';
 console.log(document.querySelector('.guess').value);
 */
 
-const secretNumber = Math.trunc(Math.random() * 20) + 1; //*20 it gives us number between 0 and 19. Math trunc delete floating part.
-document.querySelector('.number').textContent = secretNumber;
+let secretNumber = Math.trunc(Math.random() * 20) + 1; //*20 it gives us number between 0 and 19. Math trunc delete floating part.
 let score = 20;
 
 document.querySelector('.check').addEventListener('click', function () {
@@ -26,6 +25,8 @@ document.querySelector('.check').addEventListener('click', function () {
 
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
+
+    document.querySelector('.number').textContent = secretNumber;
   } else if (guess < secretNumber) {
     document.querySelector('.message').textContent = 'Too low!';
     if (score > 1) {
@@ -45,4 +46,17 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+document.querySelector('.again').addEventListener('click', () => {
+  score = 20;
+  document.querySelector('.score').textContent = score;
+
+  document.querySelector('.message').textContent = 'Star guessing...';
+  document.querySelector('.guess').value = '';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.number').style.width = '15rem';
+  document.querySelector('body').style.backgroundColor = '#222';
+
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
 });
