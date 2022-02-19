@@ -10,6 +10,7 @@ console.log(document.querySelector('.guess').value);
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1; //*20 it gives us number between 0 and 19. Math trunc delete floating part.
 let score = 20;
+let heighscore = 0;
 
 document.querySelector('.check').addEventListener('click', function () {
   console.log(document.querySelector('.guess').value);
@@ -27,6 +28,11 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').style.width = '30rem';
 
     document.querySelector('.number').textContent = secretNumber;
+
+    if (score > heighscore) {
+      heighscore = score;
+      document.querySelector('.highscore').textContent = heighscore;
+    }
   } else if (guess < secretNumber) {
     document.querySelector('.message').textContent = 'Too low!';
     if (score > 1) {
